@@ -36,7 +36,7 @@ RUN echo "* *     * * *   root    /monitor_traffic.sh" >> /etc/crontab
 # /import will be the universal mount-point for IPython
 # The Galaxy instance can copy in data that needs to be present to the IPython webserver
 RUN mkdir /import
-VOLUME ["/import/"]
+VOLUME ["/import"]
 WORKDIR /import/
 
 COPY ./startup.sh /startup.sh
