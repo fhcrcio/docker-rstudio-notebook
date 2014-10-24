@@ -18,6 +18,8 @@ RUN dpkg -i rstudio-server-0.98.987-amd64.deb
 RUN rm /rstudio-server-0.98.987-amd64.deb
 RUN pip install bioblend
 
+ADD rsession.conf /etc/rstudio/rsession.conf
+
 RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y -q net-tools
 RUN DEBIAN_FRONTEND=noninteractive apt-get autoremove -y
 RUN DEBIAN_FRONTEND=noninteractive apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
