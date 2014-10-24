@@ -23,9 +23,12 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update -q
 RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y -q r-base r-base-dev
 RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y -q dpkg wget psmisc libssl0.9.8 cron sudo libcurl4-openssl-dev curl libxml2-dev nginx python
 RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y -q python-pip
-RUN wget http://download2.rstudio.org/rstudio-server-0.98.987-amd64.deb
-RUN dpkg -i rstudio-server-0.98.987-amd64.deb
-RUN rm /rstudio-server-0.98.987-amd64.deb
+
+# Install rstudio-server
+RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y -q lsb-release
+RUN wget http://download2.rstudio.org/rstudio-server-0.98.1081-amd64.deb
+RUN dpkg -i rstudio-server-0.98.1081-amd64.deb
+RUN rm /rstudio-server-0.98.1081-amd64.deb
 RUN pip install bioblend
 
 ADD rsession.conf /etc/rstudio/rsession.conf
